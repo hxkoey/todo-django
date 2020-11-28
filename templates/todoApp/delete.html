@@ -1,0 +1,18 @@
+{% extends 'todoApp/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block body_block %}
+  <div class="jumbotron" align='center'>
+    <h1>Are you sure you want to delete?</h1></br>
+
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      <input type="submit" name="" class='btn btn-danger' value="Yes I am sure">
+      <a href="{% url 'index' %}"><button type="button" class='btn btn-primary' name="button">Cancel</button></a>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

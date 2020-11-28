@@ -1,0 +1,43 @@
+{% extends 'todoApp/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+
+{% block body_block %}
+
+  {% if messages %}
+  <div class="alert alert-success" role="alert">
+    {% for message in messages %}
+      <strong{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</strong>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="jumbotron">
+    <h1><img src="{% static 'img/home.jpg' %}" alt="" width=100px>  {{title}}</h1></br>
+
+    <form class="" action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class='btn btn-primary' name="" value="submit">
+    </form>
+
+    <br>
+    <div class="tasklist">
+      {% for item in queryset %}
+      <div class="item-row" align='left'>
+        {% if item.complete %}
+          <strike>{{ item.title }} {{ item.due }} </strike>
+        {% else %}
+          <span>{{ item.title }}</span>
+          <strong><span style='float:right' class='timer'>Due: {{ item.due|timeuntil }}</span></strong>
+        {% endif %}
+
+        <a href="{% url 'delete' item.id %}"><img src="{% static 'img/delete.png' %}" alt="DELETE IMG NOT FOUND"></a>
+        <a href="{% url 'update' item.id %}"><img src="{% static 'img/edit.png' %}" alt="EDIT IM  G NOT FOUND"></a></br>
+      </div>
+      {% endfor%}
+    </div>
+
+  </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'todoApp/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block body_block %}
+  <div class="jumbotron">
+
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" name="" class='btn btn-primary' value="submit">
+    </form>
+
+  </div>
+
+{% endblock %}
