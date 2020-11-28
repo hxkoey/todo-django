@@ -18,4 +18,4 @@
 
 ### Project Description
 A web application that uses html, css, jquery (frontend) and django (backend).
-This to-do application allows for editing and deleting from database directly as well.
+This to-do application supports create, update and delete from database.
