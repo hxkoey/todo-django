@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import django_heroku
 import os
 import environ
 environ.Env.read_env()
@@ -28,8 +27,8 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ['SECRET_KEY']
-django_heroku.settings(locals())
+SECRET_KEY = os.environ['SECRET_KEY']
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -135,3 +134,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR, ]
 
 # CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+import django_heroku
+django_heroku.settings(locals())
